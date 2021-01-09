@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>interviewquestions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Interview Questions</h1>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <details close>
+        <summary>What is the full form of OOPS?</summary>
+        <p>Object Oriented Programming System.</p>
+      </details>
+      <details close>
+        <summary>What is a class?</summary>
+        <p>Class is a blue print which reflects the entities attributes and actions. Technically defining a class is designing a user defined data type.</p>
+      </details>
+      <details close>
+        <summary>What is an object?</summary>
+        <p>An instance of the class is called as object.</p>
+      </details>
+      <details close>
+        <summary>List the types of inheritance supported in C++.</summary>
+        <p>Single, Multilevel, Multiple, Hierarchical and Hybrid.</p>
+      </details>
+      <details close>
+        <summary>What is the role of protected access specifier?</summary>
+        <p>If a class member is protected then it is accessible in the inherited class. However, outside the both the private and protected members are not accessible.</p>
+      </details>
+      <details close>
+        <summary>What is encapsulation?</summary>
+        <p>The process of binding the data and the functions acting on the data together in an entity (class) called as encapsulation.</p>
+      </details>
+      <details close>
+        <summary>What is abstraction?</summary>
+        <p>Abstraction refers to hiding the internal implementation and exhibiting only the necessary details.</p>
+      </details>
+      <details close>
+        <summary>What is inheritance?</summary>
+        <p>Inheritance is the process of acquiring the properties of the exiting class into the new class. The existing class is called as base/parent class and the inherited class is called as derived/child class.</p>
+      </details>
+      <details close>
+        <summary>Explain the purpose of the keyword volatile.</summary>
+        <p>Declaring a variable volatile directs the compiler that the variable can be changed externally. Hence avoiding compiler optimization on the variable reference.</p>
+      </details>
+      <details close>
+        <summary>What is an inline function?</summary>
+        <p>A function prefixed with the keyword inline before the function definition is called as inline function. The inline functions are faster in execution when compared to normal functions as the compiler treats inline functions as macros.</p>
+      </details>
+      <details close>
+        <summary>What is a storage class?</summary>
+        <p>Storage class specifies the life or scope of symbols such as variable or functions.</p>
+      </details>
+      <details close>
+        <summary>Mention the storage classes names in C++.</summary>
+        <p>The following are storage classes supported in C++
+          <br>auto, static, extern, register and mutable
+        </p>
+      </details>
+      <details close>
+        <summary>What is the role of mutable storage class specifier?</summary>
+        <p>A constant class object’s member variable can be altered by declaring it using mutable storage class specifier. Applicable only for non-static and non-constant member variable of the class.</p>
+      </details>
+      <details close>
+        <summary>Distinguish between shallow copy and deep copy.</summary>
+        <p>Shallow copy does memory dumping bit-by-bit from one object to another. Deep copy is copy field by field from object to another. Deep copy is achieved using copy constructor and or overloading assignment operator.</p>
+      </details>
+      <details close>
+        <summary>What is a pure virtual function?</summary>
+        <p>A virtual function with no function body and assigned with a value zero is called as pure virtual function.</p>
+      </details>
+      <details close>
+        <summary>What is an abstract class in C++?</summary>
+        <p>A class with at least one pure virtual function is called as abstract class. We cannot instantiate an abstract class.</p>
+      </details>
+      <details close>
+        <summary>What is a reference variable in C++?</summary>
+        <p>A reference variable is an alias name for the existing variable. Which mean both the variable name and reference variable point to the same memory location. Therefore updation on the original variable can be achieved using reference variable too.</p>
+      </details>
+      <details close>
+        <summary>What is role of static keyword on class member variable?</summary>
+        <p>A static variable does exit though the objects for the respective class are not created. Static member variable share a common memory across all the objects created for the respective class. A static member variable can be referred using the class name itself.</p>
+      </details>
+      <details close>
+        <summary>Explain the static member function.</summary>
+        <p>A static member function can be invoked using the class name as it exits before class objects comes into existence. It can access only static members of the class.</p>
+      </details>
+      <details close>
+        <summary>Can we initialize a class/structure member variable as soon as the same is defined?</summary>
+        <p>No, Defining a class/structure is just a type definition and will not allocate memory for the same.</p>
+      </details>
+      <details close>
+        <summary>What is function overloading?</summary>
+        <p>Defining several functions with the same name with unique list of parameters is called as function overloading.</p>
+      </details>
+      <details close>
+        <summary>What is operator overloading?</summary>
+        <p>Defining a new job for the existing operator w.r.t the class objects is called as operator overloading.</p>
+      </details>
+      <details close>
+        <summary>Do we have a String primitive data type in C++?</summary>
+        <p>No, it’s a class from STL (Standard template library).</p>
+      </details>
+      <details close>
+        <summary>Name the default standard streams in C++.</summary>
+        <p>cin, cout, cerr and clog.</p>
+      </details>
+      <details close>
+        <summary>What is a destructor? Can it be overloaded?</summary>
+        <p>A destructor is the member function of the class which is having the same name as the class name and prefixed with tilde (~) symbol. It gets executed automatically w.r.t the object as soon as the object loses its scope. It cannot be overloaded and the only form is without the parameters.</p>
+      </details>
+      <details close>
+        <summary>What is a constructor?</summary>
+        <p>A constructor is the member function of the class which is having the same as the class name and gets executed automatically as soon as the object for the respective class is created.</p>
+      </details>
+      <details close>
+        <summary>Which operator can be used in C++ to allocate dynamic memory?</summary>
+        <p>'new' is the operator can be used for the same.</p>
+      </details>
+      <details close>
+        <summary>What is the purpose of 'delete' operator?</summary>
+        <p>'delete' operator is used to release the dynamic memory which was created using 'new' operator.</p>
+      </details>
+      <details close>
+        <summary>What is a friend function?</summary>
+        <p>A function which is not a member of the class but still can access all the member of the class is called so. To make it happen we need to declare within the required class following the keyword 'friend'.</p>
+      </details>
+      <details close>
+        <summary>What is a copy constructor?</summary>
+        <p>A copy constructor is the constructor which take same class object reference as the parameter. It gets automatically invoked as soon as the object is initialized with another object of the same class at the time of its creation.</p>
+      </details>
+      <details close>
+        <summary>Explain the pointer – this.</summary>
+        <p>'this', is the pointer variable of the compiler which always holds the current active object’s address.</p>
+      </details>
+      <details close>
+        <summary>Can we implement all the concepts of OOPS using the keyword struct?</summary>
+        <p>C++ Yes. C No.</p>
+      </details>
+      <details close>
+        <summary>What is the scope resolution operator?</summary>
+        <p>Resolve the scope of global variables.
+          <br>To associate function definition to a class if the function is defined outside the class.</p>
+      </details>
+      <details close>
+        <summary>What is a namespace?</summary>
+        <p>A namespace is the logical division of the code which can be used to resolve the name conflict of the identifiers by placing them under different name space.</p>
+      </details>
+      <details close>
+        <summary>What is a class template?</summary>
+        <p>A template class is a generic class. The keyword template can be used to define a class template.</p>
+      </details>
+      <details close>
+        <summary>When should we use the register storage specifier?</summary>
+        <p>If a variable is used most frequently then it should be declared using register storage specifier, then possibly the compiler gives CPU register for its storage to speed up the look up of the variable.</p>
+      </details>
+      <details close>
+        <summary>Can a program be compiled without main() function?</summary>
+        <p>Yes, it can be but cannot be executed, as the execution requires main() function definition.</p>
+      </details>
+      <details close>
+        <summary>What is a container class?</summary>
+        <p>A class containing at least one member variable of another class type in it is called so.</p>
+      </details>
+      <details close>
+        <summary>What is function overriding?</summary>
+        <p>Defining the functions within the base and derived class with the same signature and name where the base class’s function is virtual.</p>
+      </details>
+      <details close>
+        <summary>What is the difference between actual and formal parameters?</summary>
+        <p>The parameters sent to the function at calling end are called as actual parameters while at the receiving of the function definition called as formal parameters.</p>
+      </details>
+      <details close>
+        <summary>What is the difference between variable declaration and variable definition?</summary>
+        <p>Declaration associates type to the variable whereas definition gives the value to the variable.</p>
+      </details>
+      <details close>
+        <summary>What is the order of objects destroyed in the memory?</summary>
+        <p>The objects are destroyed in the reverse order of their creation.</p>
+      </details>
+      <p><br><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>

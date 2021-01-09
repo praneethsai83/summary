@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>sparkstreaming</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Spark Streaming Skeleton</h1>
+      <p>This webpage contains the basic requirements for a spark streaming program</p>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <pre>
+import org.apache.spark.streaming.StreamingContext
+import org.apache.spark.streaming.StreamingContext._
+import org.apache.hadoop.io._
+import org.apache.hadoop.mapred
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.types._
+
+val ssc = new StreamingContext(sc, Seconds(30))
+var dstream = ssc.fileStream[LongWritable, Text, TextInputFormat]("/user/spark/sparkstreaming/dec152020")
+dstream.foreachRDD{
+rdd =>
+// Type the required code here
+}
+
+ssc.start
+ssc.awaitTermination
+      </pre>
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>

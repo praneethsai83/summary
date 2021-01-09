@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>oops</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>OOPS</h1>
+      <p>Object Oriented Programming System</p>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <p>When you define a class, you define a blueprint for a data type. This doesn't actually define any data, but it does define what the class name means, that is, what an object of the class will consist of and what operations can be performed on such an object.
+      </p>
+      <h3>Class Member Functions</h3>
+      <p>A member function of a class is a function that has its definition or its prototype within the class definition like any other variable. It operates on any object of the class of which it is a member, and has access to all the members of a class for that object.
+      </p>
+      <h3>Class Access Modifiers</h3>
+      <p>Data hiding is one of the important features of Object Oriented Programming which allows preventing the functions of a program to access directly the internal representation of a class type. The access restriction to the class members is specified by the labeled public, private, and protected sections within the class body. The keywords public, private, and protected are called access specifiers. The default access for members and classes is private.
+      </p>
+      <h3>The public Members</h3>
+      <p>A public member is accessible from anywhere outside the class but within a program. You can set and get the value of public variables without any member function.
+      </p>
+      <h3>The private Members</h3>
+      <p>A private member variable or function cannot be accessed, or even viewed from outside the class. Only the class and friend functions can access private members.
+      </p>
+      <h3>The protected Members</h3>
+      <p>A protected member variable or function is very similar to a private member but it provided one additional benefit that they can be accessed in child classes which are called derived classes.
+      </p>
+      <h3>The Class Constructor</h3>
+      <p>A class constructor is a special member function of a class that is executed whenever we create new objects of that class.
+      A constructor will have exact same name as the class and it does not have any return type at all, not even void. Constructors can be very useful for setting initial values for certain member variables.
+      A default constructor does not have any parameter, but if you need, a constructor can have parameters. This helps you to assign initial value to an object at the time of its creation.
+      </p>
+      <h3>The Class Destructor</h3>
+      <p>A destructor is a special member function of a class that is executed whenever an object of it's class goes out of scope or whenever the delete expression is applied to a pointer to the object of that class.
+      A destructor will have exact same name as the class prefixed with a tilde (~) and it can neither return a value nor can it take any parameters. Destructor can be very useful for releasing resources before coming out of the program like closing files, releasing memories etc.
+      </p>
+      <h3>Copy Constructor</h3>
+      <p>The copy constructor is a constructor which creates an object by initializing it with an object of the same class, which has been created previously. The copy constructor is used to −
+      </p>
+      <ul>
+        <li>Initialize one object from another of the same type.</li>
+        <li>Copy an object to pass it as an argument to a function.</li>
+        <li>Copy an object to return it from a function.</li>
+      </ul>
+      <p>If a copy constructor is not defined in a class, the compiler itself defines one.If the class has pointer variables and has some dynamic memory allocations, then it is a must to have a copy constructor.
+      </p>
+      <h3>Friend Functions</h3>
+      <p>A friend function of a class is defined outside that class' scope but it has the right to access all private and protected members of the class. Even though the prototypes for friend functions appear in the class definition, friends are not member functions.
+      A friend can be a function, function template, or member function, or a class or class template, in which case the entire class and all of its members are friends.
+      To declare a function as a friend of a class, precede the function prototype in the class definition with keyword friend.
+      </p>
+      <h3>Inline Functions</h3>
+      <p>C++ inline function is powerful concept that is commonly used with classes. If a function is inline, the compiler places a copy of the code of that function at each point where the function is called at compile time.
+      Any change to an inline function could require all clients of the function to be recompiled because compiler would need to replace all the code once again otherwise it will continue with old functionality.
+      To inline a function, place the keyword inline before the function name and define the function before any calls are made to the function. The compiler can ignore the inline qualifier in case defined function is more than a line.
+      A function definition in a class definition is an inline function definition, even without the use of the inline specifier.
+      </p>
+      <h3>this Pointer</h3>
+      <p>Every object in C++ has access to its own address through an important pointer called this pointer. The this pointer is an implicit parameter to all member functions. Therefore, inside a member function, this may be used to refer to the invoking object.
+      Friend functions do not have a this pointer, because friends are not members of a class. Only member functions have a this pointer.
+      </p>
+      <h3>Static Members of a Class</h3>
+      <p>We can define class members static using static keyword. When we declare a member of a class as static it means no matter how many objects of the class are created, there is only one copy of the static member.
+      A static member is shared by all objects of the class. All static data is initialized to zero when the first object is created, if no other initialization is present. We can't put it in the class definition but it can be initialized outside the class as done in the following example by redeclaring the static variable, using the scope resolution operator :: to identify which class it belongs to.
+      </p>
+      <h3>Inheritance</h3>
+      <p>One of the most important concepts in object-oriented programming is that of inheritance. Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time.
+      When creating a class, instead of writing completely new data members and member functions, the programmer can designate that the new class should inherit the members of an existing class. This existing class is called the base class, and the new class is referred to as the derived class.
+      The idea of inheritance implements the is a relationship. For example, mammal IS-A animal, dog IS-A mammal hence dog IS-A animal as well and so on.
+      <br><b>class derived-class: access-specifier base-class</b><br>
+      Where access-specifier is one of public, protected, or private, and base-class is the name of a previously defined class. If the access-specifier is not used, then it is private by default.
+      <br><b>Type of Inheritance</b><br>
+      When deriving a class from a base class, the base class may be inherited through public, protected or private inheritance. The type of inheritance is specified by the access-specifier as explained above.
+      We hardly use protected or private inheritance, but public inheritance is commonly used. While using different type of inheritance, following rules are applied −
+      Public Inheritance − When deriving a class from a public base class, public members of the base class become public members of the derived class and protected members of the base class become protected members of the derived class. A base class's private members are never accessible directly from a derived class, but can be accessed through calls to the public and protected members of the base class.
+      Protected Inheritance − When deriving from a protected base class, public and protected members of the base class become protected members of the derived class.
+      Private Inheritance − When deriving from a private base class, public and protected members of the base class become private members of the derived class.
+      </p>
+      <h3>Overloading (Operator and Function)</h3>
+      <p>C++ allows you to specify more than one definition for a function name or an operator in the same scope, which is called function overloading and operator overloading respectively.
+      An overloaded declaration is a declaration that is declared with the same name as a previously declared declaration in the same scope, except that both declarations have different arguments and obviously different definition (implementation).
+      When you call an overloaded function or operator, the compiler determines the most appropriate definition to use, by comparing the argument types you have used to call the function or operator with the parameter types specified in the definitions. The process of selecting the most appropriate overloaded function or operator is called overload resolution.
+      Overloaded operators are functions with special names: the keyword "operator" followed by the symbol for the operator being defined. Like any other function, an overloaded operator has a return type and a parameter list.
+      </p>
+      <h3>Polymorphism</h3>
+      <p>The word polymorphism means having many forms. Typically, polymorphism occurs when there is a hierarchy of classes and they are related by inheritance.
+      C++ polymorphism means that a call to a member function will cause a different function to be executed depending on the type of object that invokes the function.
+      This is how polymorphism is generally used. You have different classes with a function of the same name, and even the same parameters, but with different implementations.
+      </p>
+      <h3>Virtual Function</h3>
+      <p>A virtual function is a function in a base class that is declared using the keyword virtual. Defining in a base class a virtual function, with another version in a derived class, signals to the compiler that we don't want static linkage for this function.
+      What we do want is the selection of the function to be called at any given point in the program to be based on the kind of object for which it is called. This sort of operation is referred to as dynamic linkage, or late binding.
+      </p>
+      <h3>Pure Virtual Functions</h3>
+      <p>It is possible that you want to include a virtual function in a base class so that it may be redefined in a derived class to suit the objects of that class, but that there is no meaningful definition you could give for the function in the base class.
+      We can change the virtual function area() in the base class to the following −
+      </p>
+      <pre>
+        class Shape {
+           protected:
+              int width, height;
+
+           public:
+              Shape(int a = 0, int b = 0) {
+                 width = a;
+                 height = b;
+              }
+
+              // pure virtual function
+              virtual int area() = 0;
+        };
+      </pre>
+      <p>The = 0 tells the compiler that the function has no body and above virtual function will be called pure virtual function.</p>
+      <h3>Data Abstraction</h3>
+      <p>Data abstraction refers to providing only essential information to the outside world and hiding their background details, i.e., to represent the needed information in program without presenting the details.
+      Data abstraction is a programming (and design) technique that relies on the separation of interface and implementation.
+      <br>Benefits of Data Abstraction
+      Data abstraction provides two important advantages −</p>
+      <ul>
+        <li>Class internals are protected from inadvertent user-level errors, which might corrupt the state of the object.</li>
+        <li>The class implementation may evolve over time in response to changing requirements or bug reports without requiring change in user-level code.</li>
+        <li>By defining data members only in the private section of the class, the class author is free to make changes in the data. If the implementation changes, only the class code needs to be examined to see what affect the change may have. If data is public, then any function that directly access the data members of the old representation might be broken.</li>
+      </ul>
+      <h3>Data Encapsulation</h3>
+      <p>Encapsulation is an Object Oriented Programming concept that binds together the data and functions that manipulate the data, and that keeps both safe from outside interference and misuse. Data encapsulation led to the important OOP concept of data hiding.
+      Data encapsulation is a mechanism of bundling the data, and the functions that use them and data abstraction is a mechanism of exposing only the interfaces and hiding the implementation details from the user.
+      C++ supports the properties of encapsulation and data hiding through the creation of user-defined types, called classes. We already have studied that a class can contain private, protected and public members. By default, all items defined in a class are private.
+      </p>
+      <h3>Interfaces in C++ (Abstract Classes)</h3>
+      <p>An interface describes the behavior or capabilities of a C++ class without committing to a particular implementation of that class.
+      The C++ interfaces are implemented using abstract classes and these abstract classes should not be confused with data abstraction which is a concept of keeping implementation details separate from associated data.
+      A class is made abstract by declaring at least one of its functions as pure virtual function. A pure virtual function is specified by placing "= 0" in its declaration as follows −
+      </p>
+      <pre>
+        class Box {
+           public:
+              // pure virtual function
+              virtual double getVolume() = 0;
+
+           private:
+              double length;      // Length of a box
+              double breadth;     // Breadth of a box
+              double height;      // Height of a box
+        };
+      </pre>
+      <p>The purpose of an abstract class (often referred to as an ABC) is to provide an appropriate base class from which other classes can inherit. Abstract classes cannot be used to instantiate objects and serves only as an interface. Attempting to instantiate an object of an abstract class causes a compilation error.
+      Thus, if a subclass of an ABC needs to be instantiated, it has to implement each of the virtual functions, which means that it supports the interface declared by the ABC. Failure to override a pure virtual function in a derived class, then attempting to instantiate objects of that class, is a compilation error.
+      Classes that can be used to instantiate objects are called concrete classes.
+      </p>
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>

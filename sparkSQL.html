@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>sparksql</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Spark SQL Cheatsheet</h1>
+      <p>This webpage contains the summary of my spark sql notes</p>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <h3>File Formats</h3>
+      <ul>
+        <li>Sequence File</li>
+        <li>Text File</li>
+        <li>CSV File</li>
+        <li>Parquet File</li>
+        <li>AVRO File</li>
+        <li>ORC File</li>
+        <li>JSON File</li>
+        <li>XML File</li>
+        <li>Hive Metastore</li>
+      </ul>
+      <h3>Sequence File</h3>
+      <h4>Read</h4>
+      <p>
+        import org.apache.hadoop.io._
+        <br>sc.sequenceFile(path, classOf[IntWritable], classOf[Text]).map(x => x.toString())
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.rdd.map(x => (key(String), value(String)).saveAsSequenceFile(path)
+      </p>
+      <h3>Text File</h3>
+      <h4>Read</h4>
+      <p>
+        sc.textFile(path)
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.format("text").save(path)
+      </p>
+      <h3>CSV File</h3>
+      <h4>Read</h4>
+      <p>
+        spark.read.format("csv").option("header",true).option("inferSchema",true).option("sep",delimiter).load(path)
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.format("csv").option("header",true).option("sep",delimiter).option("compression",format).save(path)
+      </p>
+      <h3>Parquet File</h3>
+      <h4>Read</h4>
+      <p>
+        spark.read.parquet(path)
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.option("compression",format).parquet(path)
+      </p>
+      <h3>AVRO File</h3>
+      <h4>Read</h4>
+      <p>
+        spark.read.format("avro").load(path)
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.format("avro").option("compression",format).save(path)
+      </p>
+      <h3>ORC File</h3>
+      <h4>Read</h4>
+      <p>
+        spark.read.orc(path)
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.option("compression",format).orc(path)
+      </p>
+      <h3>JSON File</h3>
+      <h4>Read</h4>
+      <p>
+        spark.read.option("inferSchema",true).option("multiline",false).json(path)
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.format("json").option("compression",format).save(path)
+      </p>
+      <h3>XML File</h3>
+      <h4>Read</h4>
+      <p>
+        spark.read.format("xml").option("rootTag",tag).option("rowTag",tag).load(path)
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.format("xml").option("rootTag",tag).option("rowTag",tag).option("compression",format).save(path)
+      </p>
+      <h3>Hive Metastore</h3>
+      <h4>Read</h4>
+      <p>
+        spark.sql("select * from default.table")
+      </p>
+      <h4>Write</h4>
+      <p>
+        df.write.format("hive").option("fileFormat",format).saveAsTable("default.tablename")
+      </p>
+      <p>To save as one file -> df.coalesce(1)</p>
+      <h3>File Compression Formats</h3>
+      <ul>
+        <li>snappy</li>
+        <li>gzip</li>
+        <li>bzip2</li>
+        <li>lzo</li>
+        <li>deflate</li>
+        <li>uncompressed</li>
+      </ul>
+      <h3>Partitioned Hive Table</h3>
+      <p>
+        spark.sqlContext.setConf("hive.exec.dynamic.partition","true")
+        <br>spark.sqlContext.setConf("hive.exec.dynamic.partition.mode","nonstrict")
+        <br>df.write.partitionBy(colname).format("hive").saveAsTable("tablename")
+      </p>
+      <h3>SQL Functions</h3>
+      <p>
+        select, selectExpr, withColumn, withColumnRenamed, filter, where, orderBy, sort, limit, distinct, drop, groupBy, agg, count,
+        countDistinct, max, min, sum, sumDistinct, avg, variance, skewness, as, concat, concat_ws, to_date, from_unixtime, date_format,
+        join, Window.partitionBy.orderBy.rowsBetween, rank, dense_rank, lead, lag, row_number, get_json_object, from_json
+      </p>
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>

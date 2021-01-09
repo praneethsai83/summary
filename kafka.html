@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>kafka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Kafka</h1>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <h2>What is Kafka?</h2>
+      <p>Apache Kafka is a publish-subscribe messaging system which lets you send messages between processes, applications, and servers.</p>
+      <h2>Why Kafka?</h2>
+      <p>
+        Multiple source systems may communicate with multiple target systems. Intergration is difficult, hence Kafka comes as a middle layer.
+        <br>Decoupling of Data Streams.
+        <br>Real time instead of batch processing.
+      </p>
+      <h2>Topics</h2>
+      <p>It is a particular stream of data similar to tables in databases.</p>
+      <h2>Partitions</h2>
+      <p>
+        Each topics are split in partitions. Each message in partition is identified by an incremental id called offset.
+        <br>Data is only kept for a limited time(Default is one week).
+        <br>Once the data is written in partition it can’t be changed(Immutability).
+      </p>
+      <h2>Broker</h2>
+      <p>
+        A Kafka cluster consists of one or more servers (Kafka brokers). Producers are processes that publish data (push messages) into Kafka topics within the broker. A consumer of topics pulls messages off a Kafka topic. Partitions are spread across these brokers.
+        <br>If you are connected with one broker, you are connected with whole cluster. Messages are stored in any of the below brokers. Kafka takes care of storing and fetching the message from these brokers.
+      </p>
+      <p>
+        Topic replication should be greater than 1. That means if any of the broker is down data can be served from another replicated broker.
+        <br>Each partition has one leader and multiple ISRs(in sync replicas). All reads and writes happens through leader.
+        <br>Producers can choose to wait for acknowledgement of data writes. Acks=0, no wait; Acks=1, wait for Ack from leader; Acks=all, wait for leader and replicas.
+      </p>
+      <h2>Producer: Message Keys</h2>
+      <p>
+        If producers send keys with message, it guarantees that all the messages from the topic are part of same partition. This allows ordering of the data.
+      </p>
+      <h2>Consumer Group</h2>
+      <p>Consumer can be grouped together for a given topic for maximising read throughput. Each consumer in a group read from mutually exclusive partitions which means if C3 in a consumer group is reading from partition P0, no other consumer from the group can read from P0 partition.</p>
+      <h2>Zookeeper</h2>
+      <p>Kafka needs Zookeeper to work. Zookeeper sends notification to the Kafka(in case of broker died, added, leader selected etc). It manages brokers, helps in performing leader election for the partition.</p>
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>

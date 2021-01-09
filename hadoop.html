@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hadoop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Hadoop Notes</h1>
+      <p>This webpage contains the summary of my hadoop notes</p>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <p>
+        Hadoop is an open-source software framework used for distributed storage and distributed processing of datasets of big data across clusters built from commodity hardware.
+        Core of Hadoop consists of three main components:
+        <br>HDFS (Hadoop distributed file system), YARN and MapReduce.
+      </p>
+      <ol>
+        <li>HDFS- It is the distributed storage part, where each file is split into 64mb or 128mb blocks and spread across the cluster.</li>
+        <li>YARN- cluster resource management</li>
+        <li>MapReduce- It is the distributed parallel processing part, where the stored data is processed parallelly across the cluster.</li>
+      </ol>
+      <p>
+        Here, the code travels to the nodes where the data is present and gets executed there itself, which accounts for Data Locality. Hence the processing is fast.
+        Hadoop can be scalable from a single node to thousands of nodes in a cluster.
+        The framework consists of other projects like hive, Sqoop, flume, HBase, etc.
+      </p>
+      <p>
+        Hadoop is a framework that allows for distributed processing of large data sets across clusters of commodity computers using simple programming models.
+        Hadoop is:
+      </p>
+      <ul>
+        <li>Economical</li>
+        <li>Reliable</li>
+        <li>Scalable</li>
+        <li>Flexible</li>
+      </ul>
+      <h6>Hadoop Definition</h6>
+      <p>
+        Software - Free of Cost
+        <br>Hardware - Commodity Hardware
+        <br>Infinite Scalability - Horizontal Scaling
+        <br>No Data transfer over the network
+        <br>Divide and conquer technique
+        <br>Parallel Processing
+        <br>Distributed computing
+      </p>
+      <h3>Problems and Solutions</h3>
+      <p>
+        Problem 1 - Vertical Scaling
+        <br>Solution - HDFS (Horizontal Scaling)
+
+        <br>Problem 2 - Bigdata being transfered over the network
+        <br>Solution - Transfer of the processing logic over the network
+
+        <br>Problem 3 - Hardware cost
+        <br>Solution - Commodity Hardware
+
+        <br>Problem 4 - Data Reliability
+        <br>Solution - Data Replication
+      </p>
+      <p><b>Hadoop is WORM (Write Once Read Multiple times) technology.</b></p>
+      <h3>Components of Hadoop Ecosystem</h3>
+      <ol>
+        <li>HDFS (Hadoop Distributed File System)</li>
+        <li>HBase</li>
+        <li>Sqoop</li>
+        <li>Flume</li>
+        <li>Spark</li>
+        <li>Hadoop MapReduce</li>
+        <li>Pig</li>
+        <li>Impala</li>
+        <li>Hive</li>
+        <li>Cloudera Search</li>
+        <li>Oozie</li>
+        <li>Hue</li>
+      </ol>
+      <p>
+        <b>There are four stages of bigdata processing:</b>
+        <br>
+        Ingest -> Processing -> Analyse -> Access
+      </p>
+      <ul>
+        <li>Ingest: Data transferred to Hadoop from various sources 3, 4</li>
+        <li>Processing: stored and processed 1, 2, 5, 6</li>
+        <li>Analyse: 7, 8, 9</li>
+        <li>Access: 10, 12</li>
+      </ul>
+      <h2>HDFS (Hadoop Distributed File System)</h2>
+      <h3>Important points to consider:</h3>
+      <ul>
+        <li>Architecture</li>
+        <li>Features</li>
+        <li>Read operations</li>
+        <li>Write operations</li>
+        <li>Data blocks</li>
+        <li>Rack awareness</li>
+        <li>High availability</li>
+        <li>Fault tolerance</li>
+        <li>Federation</li>
+        <li>Zoo Keeper</li>
+      </ul>
+      <p>
+        Hadoop Distributed File System- HDFS is used for storing structure and unstructured data in distributed manner by using commodity hardware.
+        <br>
+        Hadoop HDFS is a distributed file-system that stores data on commodity machines, providing very high aggregate bandwidth across the cluster.
+      </p>
+      <h4>"Hadoop has a MASTER – SLAVE architecture"</h4>
+      <p>
+        In Hadoop there is machine which stores the metadata in its RAM. This machine is known as the Master. It is called NameNode.
+        <br>Slave machines keep on sending acknowledgements at regular intervals of <b>3 seconds</b> to the Master machine. This acknowledgement is called HEARTBEAT.
+        <br>The slave machine is called DataNode.
+        <br>The Master machine cannot be a commodity hardware.
+        <br>After every 10 heartbeats the slave machine sends a <b>Block Report</b>.
+        <br>In Hadoop we can only add a new file or delete an existing one. We cannot update an existing file.
+      </p>
+      <h3>Components of HDFS</h3>
+      <p>
+        HDFS comprises of 3 important components NameNode, DataNode and Secondary NameNode (Hadoop Gen1) and StandBy NameNode (Hadoop Gen2).
+        HDFS operates on a Master-Slave architecture model where the NameNode acts as the master node for keeping a track of the storage cluster and the DataNode acts as a slave node summing up to the various systems within a Hadoop cluster.
+        <br>
+        HDFS IS WORLD MOST RELIABLE DATA STORAGE.
+        It holds very large amount of data and provides very easier access. To store such huge data, the files are stored across multiple machines.
+      </p>
+      <p>
+        <b>NameNode</b>– It is also known as Master node. Namenode stores meta-data i.e. number of Data Blocks, their location, replicas and other details.
+      </p>
+      <p>
+        <b>Task of NameNode:</b><br>
+        Manage file system namespace.<br>
+        Regulates client’s access to files.<br>
+        It also executes file system execution such as naming, closing, opening files and directories.
+      </p>
+      <p>
+        <b>DataNode</b>– It is also known as Slave. In Hadoop HDFS, DataNode is responsible for storing actual data. DataNode performs read and write operation as per request for the clients in HDFS.
+      </p>
+      <p>
+        <b>Task of DataNode:</b><br>
+        Block replica creation, deletion, and replication according to the instruction of NameNode.
+        DataNode manages data storage of the system.
+      </p>
+      <p>
+        <b>FSImage</b>- The entire file system namespace, including the mapping of blocks to files and file system properties, is stored in a file called the FsImage. The FsImage is stored as a file in the NameNode’s local file system too.
+      </p>
+      <p>
+        <b>Edit Log</b>-  The NameNode uses a transaction log called the EditLog to persistently record every change that occurs to file system metadata. Stored as file in NameNodes Local file system.
+      </p>
+      <p>At any point of time, applying edits log records to FsImage (recently saved copy) will give the current status of FsImage, i.e., file system metadata.</p>
+      <h3>Features of HDFS</h3>
+      <ol>
+        <li>Distributed storage</li>
+        <li>Data blocks</li>
+        <li>Replication</li>
+        <li>High availability</li>
+        <li>Data reliability</li>
+        <li>Fault tolerance</li>
+        <li>Scalability</li>
+        <li>High throughput access to application data</li>
+        <li>Data locality</li>
+      </ol>
+      <h3>Rack Awareness</h3>
+      <p>Concept to determine in which nodes the replicated blocks must be placed in order to reduce the latency or the data transfer over the network.</p>
+      <h3>Data Replication</h3>
+      <p>Process to increase the reliability of the data and increase the fault tolerance by replicating the data blocks across the cluster. The number of replicas is called replication factor (default = 3).</p>
+      <h3>High availability</h3>
+      <p>
+        This was added in Hadoop 2 to solve the problem of single point of failure.
+        High availability refers to the availability of the system or data in the wake of component failure in the system.
+        High availability feature in Hadoop ensures the availability of the Hadoop cluster without any down time even in unfavourable conditions like NameNode failure, datanode failure, machine crash etc.
+
+        <br><b>Major requirements:</b>
+        <br>The active node and the passive node should always be in sync with each other and must have the same metadata.
+        <br>Only one namenode must be active at a time. Otherwise the problem of split-brain scenario.
+      </p>
+      <h3>Zoo Keeper</h3>
+      <p>The one responsible for maintaining high availability.</p>
+      <h3>Metadata</h3>
+      <p>
+        This is the information of the data stored as blocks in different machines.
+        How many blocks the data got divided into and where are they stored?
+        Without metadata we cannot reconstruct the data which was divided into blocks.
+      </p>
+      <h3>Backup mechanism of the NameNode</h3>
+      <h4>First generation (Without HA)</h4>
+      <p>
+        The master machine maintains an edit log for every interval and then after an hour or so it updates the FS Image of the <b>Secondary NameNode</b>.
+        <br>In without HA mode, HDFS will have Namenode and Secondary Namenode. Here, secondary namenode periodically take snapshot of namenode and keep the metadata and audit logs up to date. So in case of Namenode failure, Secondary Namenode will have copy of latest namenode activity and prevent data loss.
+      </p>
+      <h4>Second generation (With HA)</h4>
+      <p>
+        The master machine continuously updates the FS Image of the <b>Standby NameNode</b>.
+        <br>In HA mode, HDFS have two set of Namenodes. One acts as active namenode and another acts as Standby Namenode. The duties of standby namenode is similar to Secondary namenode where it keeps the track of active namenode activity and take snapshot periodically. Here, in case of active namenode failure, standby namenode automatically takes the control and becomes active. This way user will not notice the failure in namenode. This way High availability is guaranteed.
+      </p>
+      <h3>Write Anatomy</h3>
+      <p>
+        The process of writing data to HDFS.
+        <br>Transferring local file to HDFS.
+        <br>Step 1: fire the command from any client system. The first point of contact is the Namenode.
+        <br>Step 2: the file gets divided into blocks and the namenode creates the metadata.
+        <br>Step 3: the namenode decides where (Selection of the three systems) the replicated blocks will go. The basis of the selection of the three machines is the Rack Awareness concept.
+        <br>Step 4: the write anatomy first writes to the first machine, the first one writes to the second and then the second machine writes to the third. The order of first, second and third is selected by the namenode such that the number of inter rack communications are the least.
+        <br>Step 5: to the machine where we are logged in, three processes are initiated. Data queue, data streamer and the acknowledgement queue.
+        <br>Step 6: the namenode connects to the data streamer and then asks the data streamer to make each block available in the respective machines as per the metadata.
+        <br>Step 7: the data streamer further divides the data blocks of 128mb into small packets of size 16mb. This is for the networking purpose.
+        <br>Step 8: further these packets will be made available into the data queue.
+        <br>Step 9: the data streamer will create a file in the local file system of the first machine and name it after the name of the first block. The same will be done by first and second to second and third respectively. The data streamer also adds the P1 to the acknowledgement queue.
+        <br>Step 10: after the first packet is written successfully to each system, the third system sends an acknowledgement to the second and the second to the first and first to the data streamer. When the acknowledgement is received from the first system it is confirmed that the data is written successfully. The same process will be repeated for the remaining packets and the rest of the blocks.
+        <br>The blocks are written in parallel but the packets are written in sequence.
+        <br>The reason for dividing the blocks into packets for transferring is if the system fails after 5 packets are written, the writing need not start from the first rather it can start from where it left.
+      </p>
+      <p>
+        <b>FAILURE SCENARIO</b><br>
+        Let’s say that the second machine fails.
+        <br>The first machine will not receive the acknowledgement.
+        <br>This message will be notified to the data streamer.
+        <br>Before notifying this problem to the namenode, the data streamer takes the packet which is in the acknowledgement queue and puts it into the data queue.
+        <br>Then this message will be passed onto the namenode by the data streamer.
+        <br>The name node changes the name of the block to some other name and instructs the data streamer to write the data block to the remaining machines.
+        <br>After this the data streamer will take the packet that it put into the DQ and then put it into the AQ.
+        <br>The first thing that the DS does is it changes the name of the data block it is writing to the name the namenode changed.
+        <br>The problem of UNDER REPLICATION is solved by a process called Hdfs balancer which runs continuously in the master machine.
+        <br>This checks the metadata info and checks if any blocks are under replicated and if so then it contacts namenode and asks for it to allocate a machine for it to write the block.
+        <br>After the failed machine is repaired by the Hadoop admin, the block report will be sent after 10 heartbeats. With this the Hdfs balancer will get to know that the block is not in the metadata since the name was changed, so it will go and delete that block.
+      </p>
+      <h2>YARN - (Yet Another Resource Negotiator)</h2>
+      <h3>Hadoop Data Processing success and failure scenarios</h3>
+      <p>command: hadoop jar JarFileName PackageName.ClassName InputFilePath OutputFilePath</p>
+      <h4>SUCCESS(Hadoop Generation 1)</h4>
+      <p>
+        step1: command fired in the client machine
+        <br>step2: client machine comes in contact with the JobTracker
+        <br>step3: JobTracker creates a job id for the process and gives it to the client machine
+        <br>step4: client machine creates a directory with the name of jobid and stores jar file, input file path and the output file path in the location
+        <br>step5: JobTracker takes the data stored in the jobid location in the client
+        <br>step6: JobTracker retrives the metadata about the data to be processed from the namenode using the data obtained from the client node
+        <br>step7: applying the data locality concept the TaskTracker systems are chosen and the mapper processes the data
+        <br>step8: the output of the mapper is sent to the sort and shuffle phase
+        <br>step9: output of the sort and shuffle phase is rent to the reducer for the final analysis
+        <br>step10: the output of the reducer is stored in the output file path given
+      </p>
+      <h4>SUCCESS(Hadoop Generation 2)</h4>
+      <p>
+        Everything is same except that the JobTracker is known as the Resource Manager and the TaskTracker is known as the Node Manager.
+        <br>The client comes in contact with the Resource Manager but the jobs are not directly taken care by the Resource Manager.
+        <br>The resource Manager gives the job to a special Node Manager known as the Application Master.
+        <br>The Application Master does everything that the JobTracker did in Hadoop Gen1.
+      </p>
+      <h4>FAILURE(Hadoop Generation 1)</h4>
+      <ol>
+        <li>Failure of Mapper:
+          <br>the process is repeated 4 times if the mapper fails and each time the process starts from the beginning. if the process fails even after the fourth attempt then the system reports an error.
+        </li>
+        <li>Failure of Reducer:
+          <br>same as mapper.
+        </li>
+        <li>Failure of TaskTracker:
+          <br>since the jobtracker has all the metadata obtained from the namenode, it can directly replace the failed system using the data locality concept.
+        </li>
+        <li>Failure of JobTracker:
+          <br>Single Point Of Failure. Nothing can be done.
+        </li>
+      </ol>
+      <h4>FAILURE(Hadoop Generation 2)</h4>
+      <ol>
+        <li>Failure of Mapper:
+          <br>the process is repeated 4 times if the mapper fails and each time the process starts from the beginning. if the process fails even after the fourth attempt then the system reports an error.
+        </li>
+        <li>Failure of Reducer:
+          <br>same as mapper.
+        </li>
+        <li>Failure of TaskTracker:
+          <br>since the application master has all the metadata obtained from the namenode, it can directly replace the failed system using the data locality concept.
+        </li>
+        <li>Failure of Application Master:
+          <br>Resource manager sets a new application master.
+        </li>
+        <li>Failure of Resource manager:
+          <br>Zoo keeper sets the secondary namenode as the new Resource manager. This is High Availability.
+        </li>
+      </ol>
+      <h2>MapReduce</h2>
+      <h3>Mapper</h3>
+      <p>
+        Input - Key Value pair
+        <br>Output - Key Value pair
+      </p>
+      <h3>Sort and Shuffel</h3>
+      <p>
+        Input - Key Value pair
+        <br>Output - Key List of values pair
+      </p>
+      <h3>Reducer</h3>
+      <p>
+        Input - Key List of values pair
+        <br>Output - Key Value pair
+      </p>
+      <h3>Partitioner</h3>
+      <p>
+        A partitioner works like a condition in processing an input dataset. The partition phase takes place after the map phase and before the reduce phase.
+        <br>The number of partitions equals the number of reducer tasks which means the partitioner divides the data according to the number of reducers.
+        <br>A partitioner partitions the key value pairs of the intermidiate map-output.
+      </p>
+      <h3>Combiner</h3>
+      <p>
+        A combiner also known as the semi-reducer is an optional class that operates by accepting the inputs from the map class and there after passing the output key-value pairs to the reducer class.
+        <br>The main function of the combiner is to summarize the map output records with the same key and send the output over the network to the reducer.
+      </p>
+      <h3>Reducer side Joins</h3>
+      <p>
+        We can join two files by using reducer joins. we make use of two mappers.
+      </p>
+      <h3>Distributed Cache</h3>
+      <p>
+        two files are joined in the mapper phase. this can be used when one data file is much smaller than other.
+      </p>
+      <h3>Sample Driver Codes</h3>
+      <h4>1. Simple mapper and reducer</h4>
+      <p>
+        Configuration conf = new Configuration();
+        <br>Job job = new Job(conf);
+        <br>job.setJarByClass(wordCountDriver.class);
+        <br>job.setMapperClass(WordCountMapper.class);
+        <br>job.setNumReduceTasks(1);
+        <br>job.setReducerClass(WordCountReducer.class);
+        <br>
+        <br>job.setOutputKeyClass(Text.class);
+        <br>job.setOutputValueClass(IntWritable.class);
+        <br>FileInputFormat.addInputPath(job, new Path(args[0]));
+        <br>FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        <br>FileSystem fs = FileSystem.get(conf);
+        <br>fs.delete(new Path(args[1]));
+        <br>job.waitForCompletion(true);
+      </p>
+      <h4>2. Combiner</h4>
+      <p>
+        Configuration conf = new Configuration();
+        <br>Job job = new Job(conf);
+        <br>job.setJarByClass(Driver.class);
+        <br>job.setMapperClass(Mapper.class);
+        <br>job.setCombinerClass(Reducer.class);
+        <br>job.setNumReduceTasks(1);
+        <br>if(args[2].equals("yes")) {
+        <br> job.setReducerClass(Reducer.class);
+        <br>}
+        <br>job.setOutputKeyClass(Text.class);
+        <br>job.setOutputValueClass(IntWritable.class);
+        <br>FileInputFormat.addInputPath(job, new Path(args[0]));
+        <br>FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        <br>FileSystem fs = FileSystem.get(conf);
+        <br>fs.delete(new Path(args[1]));
+        <br>job.waitForCompletion(true);
+      </p>
+      <h4>3. Partitioner</h4>
+      <p>
+        Configuration conf = new Configuration();
+        <br>Job job = new Job(conf);
+        <br>job.setJarByClass(Driver.class);
+        <br>job.setMapperClass(Mapper.class);
+        <br>job.setNumReduceTasks(3);
+        <br>job.setPartitionerClass(Partitioner.class);
+        <br>job.setReducerClass(Reducer.class);
+        <br>job.setOutputKeyClass(Text.class);
+        <br>job.setOutputValueClass(DoubleWritable.class);
+        <br>FileInputFormat.addInputPath(job, new Path(args[0]));
+        <br>FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        <br>FileSystem fs = FileSystem.get(conf);
+        <br>fs.delete(new Path(args[1]));
+        <br>job.waitForCompletion(true);
+      </p>
+      <h4>4. Reducer side joins</h4>
+      <p>
+        Configuration conf = new Configuration();
+        <br>Job job = new Job(conf);
+        <br>job.setJarByClass(Driver.class);
+        <br>MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, Mapper1.class);
+        <br>MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, Mapper2.class);
+        <br>job.setReducerClass(Reducer.class);
+        <br>
+        <br>job.setMapOutputKeyClass(IntWritable.class);
+        <br>job.setMapOutputValueClass(Text.class);
+        <br>job.setOutputKeyClass(Text.class);
+        <br>job.setOutputValueClass(Text.class);
+        <br>
+        <br>job.setNumReduceTasks(1);
+        <br>FileOutputFormat.setOutputPath(job, new Path(args[2]));
+        <br>FileSystem fs = FileSystem.get(conf);
+        <br>fs.delete(new Path(args[2]));
+        <br>job.waitForCompletion(true);
+      </p>
+      <h4>5. Distributed Cache</h4>
+      <p>
+        Configuration conf = new Configuration();
+        <br>Job job = new Job(conf);
+        <br>job.setJarByClass(KPIDriver.class);
+        <br>DistributedCache.addCacheFile(new URI(args[0]), job.getConfiguration());
+        <br>job.setMapperClass(KPIMapper.class);
+        <br>job.setNumReduceTasks(1);
+        <br>job.setReducerClass(KPIReducer.class);
+        <br>
+        <br>job.setOutputKeyClass(Text.class);
+        <br>job.setOutputValueClass(IntWritable.class);
+        <br>FileInputFormat.addInputPath(job, new Path(args[1]));
+        <br>FileOutputFormat.setOutputPath(job, new Path(args[2]));
+        <br>FileSystem fs = FileSystem.get(conf);
+        <br>fs.delete(new Path(args[2]));
+        <br>job.waitForCompletion(true);
+      </p>
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>

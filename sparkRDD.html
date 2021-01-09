@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>sparkrdd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Spark RDD</h1>
+      <p>
+        An RDD is an immutable distributed collection of elements of the data, partitioned across the nodes in the cluster that can be operated in parellel with a low-level API that offers transformations and actions.
+      </p>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <p>
+        RDD (Resilient Distributed Dataset) -> fundamental unit of spark
+        Most spark programming consisits of performing operations on RDDs.
+      </p>
+      <p>Three ways to create RDDs:</p>
+      <ol>
+        <li>from a file or a set of files</li>
+        <li>from data in memory</li>
+        <li>from another rdd</li>
+      </ol>
+      <h2>RDD Operations</h2>
+      <p>There are 2 types of RDD operations:</p>
+      <ol>
+        <li>Transformations - creates a dataset from a present one</li>
+        <li>Actions - returns values</li>
+      </ol>
+      <h3>RDD Transformations</h3>
+      <p>
+        Functions that produce new rdds from the existing rdds.
+        It takes rdd as input and produces one or more rdds as output.
+        Each time a new rdd is created
+        Applying transformations builds an rdd lineage.
+        RDD lineage is also known as rdd operator graph. it is a logical execution of the entire parent rdds of the rdd.
+        Transformations are lazy in nature that is they get evaluated only when an action is performed.
+        <br>
+        There are two types of transformations, Narrow transformation and Wide transformation.
+      </p>
+      <p>
+        Narrow Transformation: In narrow transformation, all the elements that are required to compute the records are in single partition live in a single partition of the parent rdd. a limited subset of partition is used to compute the result.
+      </p>
+      <p>Two common narrow transformations are:</p>
+      <ol>
+        <li>map - creates a new rdd by performing a function on each record in the base</li>
+        <li>filter - creates a new rdd by including or excluding each record in the base rdd</li>
+      </ol>
+      <p>
+        Wide Transformation: In wide transformation, all the elements that are required to compute the records are in single partition may live in a multiple partitions of the parent rdd. eg: intersection, distince, reduceByKey, groupByKey, join, cartesian.
+      </p>
+      <h3>Spark Context</h3>
+      <p>
+        Every spark program needs a spark context. The spark shell creates a spark context object called 'sc' by default.
+        <br>Spark context runs on a client machine.
+        <br>Spark context contacts with the cluster master node.
+        <br>From cluster master node, containers will be opened in the worker nodes.
+        <br>Following by containers, executors will openup in worker nodes.
+        <br>These executors will start interacting with the spark context.
+      </p>
+      <h3>Shuffle</h3>
+      <p>
+        A shuffle occurs when data is rearranged between partitions. this is required when a transformation requires information from other partitions, such as summing all the values in a column. spark will gather the required data from each partiton and combine it into a new partition, likely on a different executor.
+        <br>
+        During shuffle, data is written to the disk and transferred across the network halting spark's ability to do processing in-memory and causing a performance bottleneck.
+      </p>
+      <h3>Map-Side Reduction</h3>
+      <p>
+        when aggregating data during a shuffle, rather than passing all the data, it is preferred to combine the values in the current partition and pass only the result in the shuffle. This process is called map-side reduction. This improves performance by reducing the quantity of data being transferred during a shuffle.
+      </p>
+      <h3>RDD Lineage</h3>
+      <p>
+        Evaluation of rdd is lazy in nature meaning a series of transformations are performed on an rdd, which is not even evaluated immediately.
+        While we create a new rdd from an existing spark rdd, that new rdd also carries a pointer to the parent rdd in spark.
+        RDD lineage is nothing but the graph of all parent rdds of an rdd.
+        <br>
+        Lazy evaluation improves the use of disk and memory in spark. In lazy evaluation, until the execution of the action operation, the data is not read.
+        <br>
+        When we call sc.textFile, it creates the variable for the RDD and links it to the file, but it doesn't read the file. In each step spark creates an empty rdd and links it to its parent. however, it still doesn't process it. data is processed in the end during the action step.
+        <br>
+        Data is not cached by default. If we execute an action then all the preceding transformations are executed again. if we have an rdd which we need to use it multiple times then we must cache it.
+        <br>
+        spark maintains each rdd lineage. Spark performs sequence of transformations row wise in the textfile since it does not store the data. this concept is called pipelining.
+      </p>
+      <h3>Spark Fault Tolerance</h3>
+      <p>
+        Takes care of failures by rebuilding the failed portion using the lineage information.
+      </p>
+      <p>In summary, an RDD is represented as an abstract and is defined by the following 5 pieces of information:</p>
+      <ol>
+        <li>set of partitions</li>
+        <li>set of dependencies on parent rdds</li>
+        <li>a function for computing all the rows in the data set</li>
+        <li>metadata about partitioning schema</li>
+        <li>where the data lives on the cluster</li>
+      </ol>
+      <p>The first three pieces of information make up the lineage information, which spark uses for two pusposes:</p>
+      <ol>
+        <li>determining the order of execution of rdds</li>
+        <li>failure recovery purposes</li>
+      </ol>
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>

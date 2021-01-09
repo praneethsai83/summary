@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>hive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Hive</h1>
+    </div>
+    <div class="container">
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+      <ul>
+        <li>Apache Hive is an open-source data warehousing tool for performing distributed processing and data analysis.</li>
+        <li>Apache Hive uses a Hive Query language, which is a declarative language similar to SQL. Hive translates the hive queries into MapReduce programs.</li>
+        <li>It supports developers to perform processing and analyses on structured and semi-structured data by replacing complex java MapReduce programs with hive queries.</li>
+        <li>The Hive driver receives the HiveQL statements submitted by the user through the command shell. It creates the session handles for the query and sends the query to the compiler.</li>
+        <li>Hive compiler parses the query. It performs semantic analysis and type-checking on the different query blocks and query expressions by using the metadata stored in metastore and generates an execution plan.</li>
+        <li>The execution plan created by the compiler is the DAG(Directed Acyclic Graph), where each stage is a map/reduce job, operation on HDFS, a metadata operation.</li>
+        <li>Optimizer performs the transformation operations on the execution plan and splits the task to improve efficiency and scalability.</li>
+        <li>Execution engine, after the compilation and optimization steps, executes the execution plan created by the compiler in order of their dependencies using Hadoop.</li>
+        <li>Metastore is a central repository that stores the metadata information about the structure of tables and partitions, including column and column type information.</li>
+        <li>It also stores information of serializer and deserializer, required for the read/write operation, and HDFS files where data is stored. This metastore is generally a relational database.</li>
+      </ul>
+      <h3>Hive components</h3>
+      <ol>
+        <li>User Interface</li>
+        <li>Meta Store</li>
+        <li>HiveQL Process Engine</li>
+        <li>Execution Engine</li>
+        <li>HDFS or HBase</li>
+      </ol>
+      <h3>Working of Hive</h3>
+      <p>
+        <b>Step-1 Execute Query</b>
+        <br>
+        At very first, the Hive interface ( Command Line or Web UI) sends the query to Driver (any database driver such as JDBC, ODBC, etc.) to execute.
+<br>
+        <b>Step-2 Get Plan</b>
+<br>
+        Afterwards, the driver takes the help of query compiler which parses the query to check the syntax and query plan or the requirement of the query.
+<br>
+        <b>Step-3  Get Metadata</b>
+<br>
+        Further, the compiler sends metadata request to Metastore (any database).
+<br>
+        <b>Step-4 Send Metadata</b>
+<br>
+        After that Metastore sends metadata as a response to the compiler.
+<br>
+        <b>Step-5 Send Plan</b>
+<br>
+        Then the compiler checks the requirement and resends the plan to the driver. However, the parsing and compiling of a query are complete, Up to here.
+<br>
+        <b>Step-6 Execute Plan</b>
+<br>
+        Further, the driver sends the execution plan to the execution engine.
+<br>
+        <b>Step-7 Execute Job</b>
+<br>
+        Then, the process of execution job is a MapReduce job, internally. Also, the execution engine sends the job to JobTracker, which is in name node and it assigns this job to TaskTracker, which is in data node. Moreover, the query executes MapReduce job, here.
+<br>
+        Metadata Ops <br>
+        During the execution, the execution engine can execute metadata operations with Metastore.
+<br>
+        <b>Step-8 Fetch Result</b>
+<br>
+        While execution is over, the execution engine receives the results from Data nodes.
+<br>
+        <b>Step-9 Send Results</b>
+<br>
+        After fetching results, execution engine sends those resultant values to the driver.
+<br>
+        <b>Step-10 Send Results</b>
+<br>
+        At last the driver sends the results to Hive interfaces.
+      </p>
+      <h3>Creating Dynamic Partition</h3>
+      <ul>
+        <li>Create a normal table - create table tablename () row format delimited fields terminated by ',';</li>
+        <li>Load data to the table created - load data local inpath 'path' into table tablename;</li>
+        <li>Create dynamic partition table - create table dtablename () partitioned by () clustered by () into n bucketsrow format delimited fields terminated by ',';</li>
+        <li>set hive.exec.dynamic.partition.mode=nonstrict;</li>
+        <li>set hive.enforce.bucketing=true;</li>
+        <li>Insert the tablename data into dtablename - insert into dtablename partition () select * from tablename;</li>
+      </ul>
+      <p><a href="https://praneethsai83.github.io/summary/header.html">HOME</a></p>
+    </div>
+  </body>
+</html>
